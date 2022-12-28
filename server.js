@@ -29,16 +29,16 @@ app.get(`/api/notes`, (req, res) => {
 
 //Apply this output from afore data
 app.post(`/api/notes`, (req, res) => {
-    let notasNovo = {
+    let newNotes = {
         titulo:req.body.title,
         identidade: uid(),
         escrita:req.body.text 
     };
 
-    notes.push(notasNovo)
+    notes.push(newNotes)
     fs.writeFile(rua.json(__dirname, "db", "db.json"), JSON.stringify(notes), src => {
         if (err) (console.log(err))
-        res.json(notasNovo)
+        res.json(newNotes)
     });
 
 })
