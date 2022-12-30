@@ -10,7 +10,9 @@ if (window.location.pathname === '/notes') {
   saveNoteBtn = document.querySelector('.save-note');
   newNoteBtn = document.querySelector('.new-note');
   noteList = document.querySelectorAll('.list-container .list-group');
+  // deleteNoteBtn = document.querySelector('.delete-note');
 }
+
 
 // Show an element
 const show = (elem) => {
@@ -26,12 +28,13 @@ const hide = (elem) => {
 let activeNote = {};
 
 const getNotes = () =>
-  fetch('/api/notes', {
+fetch('/api/notes', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
   });
+
 
 const saveNote = (note) =>
   fetch('/api/notes', {
@@ -178,6 +181,7 @@ if (window.location.pathname === '/notes') {
   newNoteBtn.addEventListener('click', handleNewNoteView);
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
   noteText.addEventListener('keyup', handleRenderSaveBtn);
+  // deleteNoteBtn.addEventListener('click', handleNoteDelete);
 }
 
 getAndRenderNotes();

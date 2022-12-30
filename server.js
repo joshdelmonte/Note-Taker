@@ -36,7 +36,7 @@ app.post(`/api/notes`, (req, res) => {
     };
 
     notes.push(newNotes)
-    fs.writeFile(rua.json(__dirname, "db", "db.json"), JSON.stringify(notes), src => {
+    fs.writeFile(rua.join(__dirname, "db", "db.json"), JSON.stringify(notes), src => {
         if (err) (console.log(err))
         res.json(newNotes)
     });
@@ -47,6 +47,12 @@ app.post(`/api/notes`, (req, res) => {
 app.delete(`/api/notes/:id`, (req, res) =>{
     notes = notes.filter(note => note.identidade !== req.params.identidade);
     res.json(notes)
+
+    // reaFromFile(rua.join(__dirname, "db", "db.json"), JSON.stringify(notes), src => {
+    //     if (err) (console.log(err))
+    //     res.json(notes)
+    // });
+
 });
 
 app.listen(PORT, () =>{
