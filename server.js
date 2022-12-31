@@ -30,8 +30,8 @@ app.get(`/api/notes`, (req, res) => {
 //Apply this output from afore data
 app.post(`/api/notes`, (req, res) => {
     let newNotes = {
-        titulo:req.body.title,
-        identidade: uid(),
+        title:req.body.title,
+        id: uid(),
         escrita:req.body.text 
     };
 
@@ -45,16 +45,16 @@ app.post(`/api/notes`, (req, res) => {
 
 //Designate code blocks for DELETE (`DELETE /api/notes/:id` should receive a query parameter that contains the id of a note to delete.)
 app.delete(`/api/notes/:id`, (req, res) =>{
-    notes = notes.filter(note => note.identidade !== req.params.identidade);
+    notes = notes.filter(note => note.id !== req.params.id);
     res.json(notes)
 
-    // reaFromFile(rua.join(__dirname, "db", "db.json"), JSON.stringify(notes), src => {
-    //     if (err) (console.log(err))
-    //     res.json(notes)
-    // });
+    reaFromFile(rua.join(__dirname, "db", "db.json"), JSON.stringify(notes), src => {
+        if (err) (console.log(err))
+        res.json(notes)
+    });
 
 });
 
 app.listen(PORT, () =>{
-    console.log('App running')
+    console.log('App running at port 3005')
 });

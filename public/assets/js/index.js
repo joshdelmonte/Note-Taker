@@ -10,7 +10,6 @@ if (window.location.pathname === '/notes') {
   saveNoteBtn = document.querySelector('.save-note');
   newNoteBtn = document.querySelector('.new-note');
   noteList = document.querySelectorAll('.list-container .list-group');
-  // deleteNoteBtn = document.querySelector('.delete-note');
 }
 
 
@@ -35,7 +34,6 @@ fetch('/api/notes', {
     },
   });
 
-
 const saveNote = (note) =>
   fetch('/api/notes', {
     method: 'POST',
@@ -45,6 +43,12 @@ const saveNote = (note) =>
     body: JSON.stringify(note),
   });
 
+  // Delete a note with a given id
+  // I need to add a delete button to the notes
+  // I need to add a delete function to the notes
+  // this delete button needs to be in the handleNoteView function starting on line 100
+  // I need to put the delete function in the delete button
+  // The right area to put this delete function is in the handleNoteDelete function starting on line 100
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
@@ -93,6 +97,7 @@ const handleNoteDelete = (e) => {
   }
 
   deleteNote(noteId).then(() => {
+    handleNoteDelete(noteId) = deleteNote(noteId);
     getAndRenderNotes();
     renderActiveNote();
   });
