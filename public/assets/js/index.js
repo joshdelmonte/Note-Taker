@@ -64,7 +64,7 @@ const renderActiveNote = () => {
     noteTitle.setAttribute('readonly', true);
     noteText.setAttribute('readonly', true);
     noteTitle.value = activeNote.title;
-    noteText.value = activeNote.text;
+    noteText.value = activeNote.script;
   } else {
     noteTitle.removeAttribute('readonly');
     noteText.removeAttribute('readonly');
@@ -97,11 +97,37 @@ const handleNoteDelete = (e) => {
   }
 
   deleteNote(noteId).then(() => {
-    handleNoteDelete(noteId) = deleteNote(noteId);
+    handleNoteDelete();
     getAndRenderNotes();
     renderActiveNote();
   });
 };
+
+// const handleNoteDelete = (e) => {
+//   // Prevents the click listener for the list from being called when the delete button is clicked
+//   e.stopPropagation();
+
+//   // Get the note element that was clicked
+//   const note = e.target;
+
+//   // Get the id of the note to delete from the `data-note` attribute of the parent element
+//   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
+
+//   if (activeNote.id === noteId) {
+//     activeNote = {};
+//   }
+
+//   // Call deleteNote with the id of the note to delete
+//   deleteNote(noteId).then(() => {
+//     // Once the delete operation is complete, update the notes list in the UI
+//     getAndRenderNotes();
+//     renderActiveNote();
+//   });
+// };
+
+
+
+
 
 // Sets the activeNote and displays it
 const handleNoteView = (e) => {

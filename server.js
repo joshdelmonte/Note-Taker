@@ -32,12 +32,12 @@ app.post(`/api/notes`, (req, res) => {
     let newNotes = {
         title:req.body.title,
         id: uid(),
-        escrita:req.body.text 
+        script:req.body.script 
     };
 
     notes.push(newNotes)
     fs.writeFile(rua.join(__dirname, "db", "db.json"), JSON.stringify(notes), src => {
-        if (err) (console.log(err))
+        if (src) (console.log(src))
         res.json(newNotes)
     });
 
@@ -48,8 +48,8 @@ app.delete(`/api/notes/:id`, (req, res) =>{
     notes = notes.filter(note => note.id !== req.params.id);
     res.json(notes)
 
-    reaFromFile(rua.join(__dirname, "db", "db.json"), JSON.stringify(notes), src => {
-        if (err) (console.log(err))
+    fs.readFile(rua.join(__dirname, "db", "db.json"), JSON.stringify(notes), src => {
+        if (src) (console.log(src))
         res.json(notes)
     });
 
