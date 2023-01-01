@@ -49,7 +49,7 @@ app.delete(`/api/notes/:id`, (req, res) =>{
     res.json(notes)
 
     fs.readFile(rua.join(__dirname, "db", "db.json"), JSON.stringify(notes), src => {
-        if (src) (console.log(src))
+        if (err) (console.log(err))
         res.json(notes)
     });
 
