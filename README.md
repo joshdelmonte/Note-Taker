@@ -67,9 +67,9 @@ SOFTWARE.
 ---
 
 ## URLS
--Deployed URL
+-Deployed Heroku URL
 
-" https://joshdelmonte.github.io/Note-Taker-For-You/"
+"https://dashboard.heroku.com/apps/notetaker4u"
 
 -Github URL
 
